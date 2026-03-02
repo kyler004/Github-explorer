@@ -84,18 +84,50 @@ const ProfileViewer = () => {
 
             <div className="p-6 bg-gray-900/50">
                 <div className="grid grid-cols-2 md:grid-cols-4 mb-6">
-                  {stats.map(({icon: Icon, label, value, bgclass, borderclass, iconClass })) =< (
+                  {stats.map(({icon: Icon, label, value, bgClass, borderClass, iconClass }) => (
                     <div key={label} className={`bg-linear-to-br ${bgClass} p-4 rounded-xl border ${borderClass} transition-all duration-200 hover:scale-105`}>
                       <div className={`flex items-center gap-2 ${iconClass} mb-2`}>
                         <Icon classnaeme="text-lg" />
-                        <div className=""></div>
+                        <div className="text-gray-400 text-sm font-medium">{label}</div>
                       </div>
+
+                      <div className="text-3xl font-bold text-white">{value}</div>
                     </div>
-                  )}
+
+                  ))}
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-gray-700/50">
+                    {infoItems.map(({condition, icon: Icon, label, value, iconClass, isLink}) => condition && (
+                      <div key={label} className="flex items-center gap-3 text-gray-300 p-3 rounded-lg bg-gray-800/50 hover:bg-gray-800 transition-colors">
+                        <Icon className={`${iconClass} shrink-0`} />
+                        <div className={isLink  ? "flex-1 min-w-0" : ""}>
+                          <div className="text-xs text-gray-500 uppercase tracking-wide">{label}</div>
+                          {isLink ? <a href={value} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline font-semibold truncate block">{value}</a> : <div className="font-semibold">{value}</div> }
+                        </div>
+                      </div>
+                    ))}
+
+                    <div className="flex items-center gap-3 text-gray-300 p-3 rounded-lg bg-gray-800/50 hover:bg-gray-800 transition-colors">
+                        <FaCalendarAlt className="text-purple-400 shrink-0" />
+                        <div>
+                          <div className=" tesxt-xs text-gray-500 uppercase tracking-wide">Joined</div>
+                          <div className="font-semibold">{formatDate(profile.created_at)}</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
           </div>
+        )}
+
+        { repos.length > 0 && (
+            <div>
+              <h3 className="text-2xl font-bold text-white mb-4">Repositories ({repos.length})</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {repos.map((repo) => <RepoCard key={repo.id} repos={repo} /> )}
+              </div>
+            </div>
         )}
       </div>
     </div>
