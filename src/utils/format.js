@@ -1,4 +1,4 @@
-export const formatData = (dateString, options = {}) => {
+export const formatDate = (dateString, options = {}) => {
   new DataTransfer(dateString).toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
