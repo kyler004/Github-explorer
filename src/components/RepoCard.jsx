@@ -10,8 +10,8 @@ const RepoCard = ({
   if (!repo) return null;
   const isEnhanced = variant === "enhanced";
   const baseClasses = isEnhanced
-    ? "bg-gray-800 rounded-xl p-6 hover:bg-gray-750 transition-all duration-200 border-gray-700 hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/20"
-    : "bg-gray-800 rounded-lg p-6 hover:bg-gray-750 transition-colors border border-gray-700";
+    ? "h-full bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl p-6 hover:from-gray-750 hover:to-gray-800 transition-all duration-200 border border-gray-700 hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/20"
+    : "h-full bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg p-6 hover:from-gray-750 transition-colors border border-gray-700 hover:border-gray-600";
 
   const descriptionClamp = isEnhanced ? "line-clamp-3" : "line-clamp-2";
   const statsLayout = isEnhanced

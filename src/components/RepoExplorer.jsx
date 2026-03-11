@@ -69,10 +69,10 @@ const RepoExplorer = () => {
   const containerClass = `bg-gradient-to-br from-gray-900 via-gray-900 py-8 px-4 ${hasSearched ? "min-h-full" : "h-full flex items-center justify-center"}`;
 
   return (
-    <div className={`max-w-7xl mx-auto ${hasSearched ? "" : "w-full"}`}>
+    <div className="mx-auto max-w-7xl w-full px-4 py-8">
       <div className="text-center mb-8">
         <h1 className="text-4xl font-bold text-white mb-2">
-          Github Repository Explorer
+          GitHub Repository Explorer
         </h1>
         <p className="text-gray-400">Search and explore GitHub repositories</p>
       </div>
@@ -80,8 +80,9 @@ const RepoExplorer = () => {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         onSubmit={(e) => handleSearch(e, 1)}
-        placeholder="Search repositories (e.g., react, python) ..."
+        placeholder="Search repositories (e.g., react, python)..."
         loading={loading}
+        buttonText="Search"
       />
       {hasSearched && (
         <RepoFilters

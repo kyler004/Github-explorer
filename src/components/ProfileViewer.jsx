@@ -109,11 +109,11 @@ const ProfileViewer = () => {
 
   return (
     <div
-      className={`bg-linear-to-r from-gray-900 via-gray-800 to-gray-900 px-4 py-4 ${hasContent ? "min-h-full" : "h-full flex items-center justify-center"} `}
+      className={`bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 px-4 py-8 ${hasContent ? "min-h-full" : "h-full flex items-center justify-center"}`}
     >
-      <div className={`max-w-6xl ${hasContent ? "" : "w-full"}`}>
+      <div className={`max-w-6xl mx-auto w-full`}>
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-white mb62">
+          <h1 className="text-4xl font-bold text-white mb-2">
             Github Profile View
           </h1>
           <p className="text-gray-400">
@@ -131,39 +131,38 @@ const ProfileViewer = () => {
         <ErrorMessage message={error} />
 
         {profile && (
-          <div className="bg-linear-to-br from-gray-800 via-gray-800 to-gray-900 rounded-2xl shadow-2xl overflow-hidden mb-8 border-gray-700/50 backdrop-blur-sm">
-            <div className="bg-linear-to-r from-blue-600/20 via-purple-600/20 to-pink-600/20 p-6 border-b border-gray-700/50 ">
+          <div className="bg-gradient-to-br from-gray-800 via-gray-800 to-gray-900 rounded-2xl shadow-2xl overflow-hidden mb-8 border border-gray-700/50 backdrop-blur-sm">
+            <div className="bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-pink-600/20 p-6 border-b border-gray-700/50">
               <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
-                <div className="relative">
-                  <div className="absolute inset-0 bg-linear-to-r from-blue-500 to-purple-500 rounded-full blur-lg opacity-50">
-                    <img
-                      src={profile.avatar_url}
-                      alt={profile.name || profile.login}
-                      className="relative w-32 h-32 md:w-40 md:40 rounded-full border-4 border-gray-700 shadow-xl"
-                    />
-                  </div>
+                <div className="relative flex-shrink-0">
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full blur-lg opacity-50"></div>
+                  <img
+                    src={profile.avatar_url}
+                    alt={profile.name || profile.login}
+                    className="relative w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-gray-700 shadow-xl"
+                  />
+                </div>
 
-                  <div className="flex-1 text-center md:text-left">
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-2 ">
-                      {profile.name || profile.login}
-                    </h2>
-                    <p className="text-grau-400 text-lg mb-3 flex items-center justify-center md:justify-start gap-2">
-                      <FaGithub className="text-gray-500" />@{profile.login}
+                <div className="flex-1 text-center md:text-left">
+                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">
+                    {profile.name || profile.login}
+                  </h2>
+                  <p className="text-gray-400 text-lg mb-3 flex items-center justify-center md:justify-start gap-2">
+                    <FaGithub className="text-gray-500" />@{profile.login}
+                  </p>
+                  {profile.bio && (
+                    <p className="text-gray-300 text-base mb-4 max-w-4xl">
+                      {profile.bio}
                     </p>
-                    {profile.bio && (
-                      <p className="text-gray-300 text-base mb-4 max-w-4xl">
-                        {profile.bio}
-                      </p>
-                    )}
-                    <a
-                      href={profile.html_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-linear-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
-                    >
-                      <FaGithub /> view on Github
-                    </a>
-                  </div>
+                  )}
+                  <a
+                    href={profile.html_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+                  >
+                    <FaGithub /> View on Github
+                  </a>
                 </div>
               </div>
             </div>
@@ -181,12 +180,10 @@ const ProfileViewer = () => {
                   }) => (
                     <div
                       key={label}
-                      className={`bg-linear-to-br ${bgClass} p-4 rounded-xl border ${borderClass} transition-all duration-200 hover:scale-105`}
+                      className={`bg-gradient-to-br ${bgClass} p-4 rounded-xl border ${borderClass} transition-all duration-200 hover:scale-105`}
                     >
-                      <div
-                        className={`flex items-center gap-2 ${iconClass} mb-2`}
-                      >
-                        <Icon classnaeme="text-lg" />
+                      <div className="flex items-center gap-2 mb-2">
+                        <Icon className={`text-lg ${iconClass}`} />
                         <div className="text-gray-400 text-sm font-medium">
                           {label}
                         </div>
@@ -240,7 +237,7 @@ const ProfileViewer = () => {
                 <div className="flex items-center gap-3 text-gray-300 p-3 rounded-lg bg-gray-800/50 hover:bg-gray-800 transition-colors">
                   <FaCalendarAlt className="text-purple-400 shrink-0" />
                   <div>
-                    <div className=" tesxt-xs text-gray-500 uppercase tracking-wide">
+                    <div className="text-xs text-gray-500 uppercase tracking-wide">
                       Joined
                     </div>
                     <div className="font-semibold">
@@ -258,9 +255,9 @@ const ProfileViewer = () => {
             <h3 className="text-2xl font-bold text-white mb-4">
               Repositories ({repos.length})
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {repos.map((repo) => (
-                <RepoCard key={repo.id} repos={repo} />
+                <RepoCard key={repo.id} repo={repo} />
               ))}
             </div>
           </div>

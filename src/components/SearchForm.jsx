@@ -7,7 +7,7 @@ const SearchForm = ({
   buttonText = "Search",
 }) => {
   return (
-    <form action="" onSubmit={onSubmit} className="mb-8">
+    <form onSubmit={onSubmit} className="mb-8">
       <div className="flex gap-4 max-w-2xl mx-auto">
         <input
           type="text"
