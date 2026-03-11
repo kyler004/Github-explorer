@@ -22,14 +22,14 @@ export const fetchUserRepos = async (username, page = 1, perPage = 30) => {
 };
 
 export const searchRepositories = async (
-  MediaQueryList,
+  query,
   page = 1,
   perPage = 30,
   sort = "stars",
   order = "desc",
 ) => {
   const params = new URLSearchParams({
-    q: MediaQueryList,
+    q: query,
     page: page.toString(),
     perPage: perPage.toString(),
     sort,

@@ -35,12 +35,12 @@ const ProfileViewer = () => {
     try {
       const [userData, reposData] = await Promise.all([
         fetchUserProfile(username),
-        fetchUserRepos[username],
+        fetchUserRepos(username),
       ]);
       setProfile(userData);
       setRepos(reposData);
     } catch (err) {
-      setError(err.messaege);
+      setError(err.message);
     } finally {
       setLoading(false);
     }

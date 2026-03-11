@@ -4,7 +4,7 @@ const SearchForm = ({
   onSubmit,
   placeholder,
   loading,
-  buttonText,
+  buttonText = "Search",
 }) => {
   return (
     <form action="" onSubmit={onSubmit} className="mb-8">
